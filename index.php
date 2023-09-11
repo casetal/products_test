@@ -32,6 +32,8 @@ class General {
     }
 
     public function fetchGroups($child_id = 0) {
+        $child_id = $this->db->Escape($child_id);
+
         $groups = $this->db->select('SELECT * from `groups` WHERE `id_parent`='.$child_id);
 
         $result = null;
@@ -64,6 +66,8 @@ class General {
     }
 
     private function fetchProducts($id_group) {
+        $id_group = $this->db->Escape($id_group);
+
         $products[] = $this->db->select('SELECT * from `products` WHERE `id_group`=' . $id_group);
         $subgroups = $this->db->select('SELECT * from `groups` WHERE `id_parent`=' . $id_group);
         

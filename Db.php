@@ -40,4 +40,8 @@ class Dbconnect {
             throw New Exception($e->getMessage());
         }
     }
+
+    public function Escape($param) {
+        return $this->connection->real_escape_string($param);
+    }
 }
